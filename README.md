@@ -43,6 +43,19 @@ Execute the frame extraction script to generate frames from videos.
 
 Run the face detection and cropping scripts to prepare dataset.
 
+## Dataset
+
+Full dataset is hosted on Kaggle due to GitHub file size limits:
+
+Kaggle Dataset Link:
+https://www.kaggle.com/datasets/vithikasurve/shinchancharacterfaces
+
+This repo contains:
+- dataset generation pipeline
+- scraping scripts
+- face detection & cropping code
+- duplicate removal logic
+
 Use the deduplication script to remove redundant frames.
 
 Dataset is ready for ML training or public release.
