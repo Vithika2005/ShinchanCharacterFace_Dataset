@@ -1,0 +1,63 @@
+┌──────────────────────┐
+│  Raw Shinchan Videos │
+│  (.mp4 / .webm)      │
+└──────────┬───────────┘
+           │
+           │ ffmpeg extraction
+           ▼
+┌────────────────────────────┐
+│     Frame Extraction       │
+│  fps=2 → image sequence    │
+│                            │
+│ frames/                    │
+│   ep1/frame_00001.jpg      │
+│   ep1/frame_00002.jpg      │
+└──────────┬─────────────────┘
+           │
+           │ input images
+           ▼
+┌────────────────────────────┐
+│   YOLO Face Model (.pt)    │
+│                            │
+│  yolov8n-face.pt           │
+│  ultralytics loader        │
+└──────────┬─────────────────┘
+           │
+           │ detect bounding boxes
+           ▼
+┌────────────────────────────┐
+│    Face Detection Step     │
+│                            │
+│ image → [x,y,w,h] boxes    │
+│ confidence scores          │
+└──────────┬─────────────────┘
+           │
+           │ crop each bbox
+           ▼
+┌────────────────────────────┐
+│     Face Cropping          │
+│                            │
+│ cv2 crop regions           │
+│ save each detected face    │
+└──────────┬─────────────────┘
+           │
+           ▼
+┌────────────────────────────┐
+│     Final Dataset          │
+│                            │
+│ faces/                     │
+│   face_0001.jpg            │
+│   face_0002.jpg            │
+│   face_0003.jpg            │
+└──────────┬─────────────────┘
+           │
+           ▼
+┌────────────────────────────┐
+│  Next Stage (Future You)   │
+│                            │
+│ • clean dataset            │
+│ • remove duplicates        │
+│ • label characters         │
+│ • train classifier         │
+│ • build Shinchan detector  │
+└────────────────────────────┘
